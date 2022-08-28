@@ -1,23 +1,25 @@
 <li id="<%= "#{dom_id(info)}_items" %>" class="py-3">
   <%= turbo_frame_tag dom_id(info) do%>
     <div class="flex items-center justify-between">
-      <%= link_to info.block, edit_info_path(info)%>
-      <%= button_tag "↓", 
-        class:"text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 px-2 text-center  items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800",
-        id:"button-#{info.id}",
-        data: {
-          controller: "info",
-          action: "info#toggleForm",
-          info_form_param: "edit-info-#{info.id}"
-        }%>
-      <%= link_to "Destroy", info_path(info),
-      data: {  turbo_method: :delete, turbo_confirm: 'Are you sure?'},
-      class:"bg-red-50 px-3 py-2 rounded inline-flex items-center justify-center text-red-600" %>
+      <%= info.block %>
+      <div class="flex items-center space-x-3">
+        <%= button_tag "↓", 
+          class:"bg-green-50 px-3 py-2 rounded inline-flex items-center justify-center text-green-600 hover:bg-green-600 hover:border-green-600",
+          id:"button-#{info.id}",
+          data: {
+            controller: "info",
+            action: "info#toggleForm",
+            info_form_param: "edit-info-#{info.id}"
+          }%>
+        <%= link_to "Destroy", info_path(info),
+        data: {  turbo_method: :delete, turbo_confirm: 'Are you sure?'},
+        class:"bg-green-50 px-3 py-2 rounded inline-flex items-center justify-center text-green-600 hover:bg-green-600 hover:border-green-600" %>
+      </div>
     </div>
     <%# <%= link_to "Destroy", info_path(info), data: {
       turbo_method: :delete,
                       turbo_confirm: "Are you sure?"
-                    }, class:"flex-shrink-0 bg-green-400 hover:bg-red-700 border-green-400 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded" %> 
+                    }, class:"flex-shrink-0 bg-green-400 hover:bg-green-700 border-green-400 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" %> 
     <div id="edit-info-<%= info.id %>" class="hidden appearance-none bg-white border border-green-200 rounded w-full text-gray-700 mr-3  py-2 px-2 leading-tight focus:outline-none">
       <ul>
         <li> hash: <%= info.block_hash["hash"]%></li>

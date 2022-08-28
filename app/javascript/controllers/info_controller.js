@@ -4,7 +4,6 @@ export default class extends Controller {
   initialize() {}
   connect() {}
   toggleForm(event) {
-    console.log("I click the button")
     event.preventDefault();
     event.stopPropagation();
 

@@ -5,3 +5,7 @@
 <%= turbo_stream.replace "#{dom_id(Info.new)}_form" do%>
   <%= render "form", info: Info.new %>
 <% end %>
+
+<%# <%= render turbo_stream.remove("#{helpers.dom_id(@info)}_items")%> 
+
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>
