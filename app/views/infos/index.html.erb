@@ -1,0 +1,9 @@
+<div class="mx-auto max-w-3xl mt-24">
+  <h1 class="font-bold text-4xl mb-6"> Bitcoin data!</h1>
+  <%= render "form", info: Info.new %>
+  <div id="infos" class="divide-y list-none">
+    <% @infos.each do |info| %>
+      <%= render info %>
+    <% end %>
+  </div>
+</div>

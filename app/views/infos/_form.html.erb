@@ -1,0 +1,31 @@
+<%= form_with(model: info, id: "#{dom_id(info)}_form") do |form| %>
+  <% if info.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(info.errors.count, "error") %> prohibited this info from being saved:</h2>
+
+      <ul>
+        <% info.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-6">
+      <%= form.label :block, "Bitcoin Hash"%>
+    <div class="relative">
+      <%= form.text_field :block, class:"block shadow-sm rounded-full 
+      border border-green-200 outline-none px-3 py-3 w-full 
+      focus:border-green-300 focus:outline-none focus:ring-4 
+      focus:ring-green-50 text-lg ", placeholder:"link goes here" %>
+
+      <div class="absolute top-0 right-0">
+        <%= form.submit "Add",class:"mt-px rounded-full py-3 px-4 
+        bg-green-500 text-white font-medium cursor-pointer border-2 
+        border-green-500 text-white font-medium cursor-pointer border-2 
+        border-green-500 hover:bg-green-600 hover:border-green-600" %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

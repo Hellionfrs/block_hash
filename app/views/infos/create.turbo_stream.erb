@@ -1,0 +1,7 @@
+<%= turbo_stream.prepend "infos" do%>
+  <%= render "info", info: @info %>
+<% end %>
+
+<%= turbo_stream.replace "#{dom_id(Info.new)}_form" do%>
+  <%= render "form", info: Info.new %>
+<% end %>
