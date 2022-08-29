@@ -1,7 +1,7 @@
-<li id="<%= "#{dom_id(info)}_items" %>" class="py-3">
+<li id="<%= "#{dom_id(info)}_items" %>" class="py-3 text-clip">
   <%= turbo_frame_tag dom_id(info) do %>
-    <div class="flex items-center justify-between">
-      <%= info.block %>
+    <div class="flex items-center justify-between text-clip">
+      <p class="text-ellipsis overflow-hidden"><%= info.block %></p>
       <div class="flex items-center space-x-3">
         <%= button_tag "↓", 
           class:"bg-green-50 px-3 py-2 rounded inline-flex items-center justify-center text-green-600 hover:bg-green-600 hover:border-green-600",
@@ -20,12 +20,12 @@
       turbo_method: :delete,
                        turbo_confirm: "Are you sure?"
                     }, class:"flex-shrink-0 bg-green-400 hover:bg-green-700 border-green-400 hover:border-green-700 text-sm border-4 text-white py-1 px-2 rounded" %> 
-    <div id="edit-info-<%= info.id %>" class="hidden indent-8 absoluteappearance-none bg-white border border-green-200 rounded w-full text-gray-700 mr-3  py-2 px-2 leading-tight focus:outline-none">
+    <div id="edit-info-<%= info.id %>" class="hidden text-ellipsis overflow-hidden flex indent-8 absoluteappearance-none bg-white border border-green-200 rounded w-full text-gray-700 mr-3  py-2 px-2 leading-tight focus:outline-none">
       <ul >
-        <li> hash: <%= info.block_hash["hash"]%></li>
-        <li> prev_block: <%= info.block_hash["prev_block"]%></li>
-        <li> time:<%= info.block_hash["time"]%></li>
-        <li> bits:<%= info.block_hash["bits"]%></li>
+        <li> <p class="text-ellipsis overflow-hidden">hash: <%= info.block_hash["hash"]%></p></li>
+        <li> <p class="text-ellipsis overflow-hidden">prev_block: <%= info.block_hash["prev_block"]%></p></li>
+        <li> <p class="text-ellipsis overflow-hidden">time:<%= info.block_hash["time"]%></p></li>
+        <li> <p class="text-ellipsis overflow-hidden">bits:<%= info.block_hash["bits"]%></p></li>
       </ul>
     </div>
     
