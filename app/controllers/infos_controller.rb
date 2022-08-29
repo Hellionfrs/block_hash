@@ -34,8 +34,8 @@ class InfosController < ApplicationController
         format.html { redirect_to info_url(@info), notice: "Info was successfully created." }
         format.json { render :show, status: :created, location: @info }
       else
-        format.turbo_stream { render turbo_stream: turbo_stream
-          .replace("#{helpers.dom_id(@info)}_form",locals: {info: @info})}
+        format.turbo_stream { render turbo_stream: turbo_stream.
+          replace("#{helpers.dom_id(@info)}_form",partial: "form", locals: {info: @info})}
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @info.errors, status: :unprocessable_entity }
       end
@@ -66,7 +66,7 @@ class InfosController < ApplicationController
       format.turbo_stream {render turbo_stream: 
         turbo_stream.remove("#{helpers.dom_id(@info)}_items")}
       
-      format.turbo_stream {flash.now[:notice] = "Info was successfully destroyed."}
+      # format.turbo_stream {flash.now[:notice] = "Info was successfully destroyed."}
       
       format.html { redirect_to infos_url, notice: "Info was successfully destroyed." }
     end
@@ -78,9 +78,8 @@ class InfosController < ApplicationController
     status = Net::HTTP.get_response(uri)
     if status.kind_of? Net::HTTPSuccess
       json = JSON.parse(res)
-      json.slice("hash", "prev_block", "time", "bits")
-    else
-      return nil
+      return json.slice("hash", "prev_block", "time", "bits")
+    
     end
     # when Net::HTTPUnauthorized
     #   {'error' => "#{res.message}: username and password set and correct?"}
