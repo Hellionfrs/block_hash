@@ -3,7 +3,6 @@ databases:
     ipAllowList: []
     databaseName: cripto_production
     user: cripto
-    password: <%= ENV["CRIPTO_DATABASE_PASSWORD"] %>
 
 services:
   - type: web
